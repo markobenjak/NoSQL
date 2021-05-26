@@ -27,7 +27,7 @@ function csvToJSON(csvString) {
         element.singleCellSize = parseInt(element.singleCellSize);
         element.nuclei = parseInt(element.nuclei);
         element.chromatin = parseInt(element.chromatin);
-		element.normalNucleoli = parseInt(element.normalNucleoli);
+	element.normalNucleoli = parseInt(element.normalNucleoli);
         element.mitoses = parseInt(element.mitoses);
         element.class = parseInt(element.class);
     });
