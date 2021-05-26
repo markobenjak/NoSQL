@@ -2,7 +2,7 @@
 NoSQL Projektni zadatak
 
 
-# Glavni file je projekt.js
+# MongoDB dio Projekta
 
 
 ## Priprema 
