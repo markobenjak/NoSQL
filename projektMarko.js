@@ -66,8 +66,8 @@ const main = async () => {
 
         let parsedCsvObject = Helpers.csvToJSON(csvString);
 
-        // 1. Zadatak - obrada nedostajućih kategoričkih i kontinuiranih vrijednosti
-        // 2. zadatak, treći dio - broj non-Null vrijednosti za svaku kontinuiranu varijablu
+        // 1. Zadatak
+        // 2. zadatak, treći dio
 		for(let i=0; i < parsedCsvObject.length; i++){
             if (parsedCsvObject[i].sampleNumber === null || parsedCsvObject[i].sampleNumber === undefined || parsedCsvObject[i].sampleNumber === "" || isNaN(parsedCsvObject[i].sampleNumber)) {
                 unsuportedValuesCount.sampleNumber++;
@@ -116,7 +116,7 @@ const main = async () => {
 
         await mongoDb.insertMany(parsedCsvObject);
 
-        // 2. zadatak, prvi dio - srednje/prosječne vrijednosti za sve kontinuirane varijable
+        // 2. zadatak, prvi dio 
         const averageValues = await mongoDb.aggregate(
             [
                 {
@@ -137,7 +137,7 @@ const main = async () => {
             ]
         );
 
-        // 2. zadatak, drugi dio - standardna devijacija za sve kontinuirane varijable
+        // 2. zadatak, drugi dio 
         const standardDeviation = await mongoDb.aggregate(
             [
                 {
@@ -166,7 +166,7 @@ const main = async () => {
         const breastCancerStatisticCollection = database.collection("breastCancerStatistic");
         await breastCancerStatisticCollection.insertOne(breastCancerStatistic);
 
-        //2. zadatak, treći dio - broj non-Null vrijednosti za svaku kontinuiranu varijablu
+        //2. zadatak, treći dio
         const suportedValuesCount = {
             sampleNumber: parsedCsvObject.length - unsuportedValuesCount.sampleNumber,
             clumpThickness: parsedCsvObject.length - unsuportedValuesCount.clumpThickness,
@@ -182,7 +182,7 @@ const main = async () => {
 
 
 
-        // 3. Zadatak - frekvencija kategoričkih varijabli
+        // 3. Zadatak
         const benignFrequency = await mongoDb.aggregate(
             [
                 {
@@ -216,15 +216,9 @@ const main = async () => {
         const frequencyCollection = database.collection("breastCancerFrequency");
         await frequencyCollection.insertMany(breastCancerFrequency);
 
-
-       // const test = await frequencyCollection.update(
-		//	{$inc:{benign: 1}}
-		//)
-
         // 4. zadatak
-        // Svaki objekt statistike ima N property-ja, gdje je N broj kontinuiranih vrijednosti. Svaki property je array brojeva, odnosno vrijednosti iz originalnog seta podataka
-        // Property-ji objekata statistike sadržavaju odgovarajuće vrijednosti odgovarajućeg elementa (npr. sampleNumber) koji odgovara danom uvjetu
-		for(let i=0; i < parsedCsvObject.length; i++){
+
+	for(let i=0; i < parsedCsvObject.length; i++){
             // sampleNumber
             if(parsedCsvObject[i].sampleNumber <= breastCancerStatistic.averageStatisticValues.Average_sampleNumber){
                 statistika1_breastCancer.sampleNumber.push(parsedCsvObject[i].sampleNumber);
