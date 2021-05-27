@@ -163,7 +163,7 @@ const main = async () => {
             averageStandardDeviationValues: (await standardDeviation.toArray())[0]
         };
         
-        const breastCancerStatisticCollection = database.collection("breastCancerStatistic");
+        const breastCancerStatisticCollection = database.collection("statistika_breastCancer");
         await breastCancerStatisticCollection.insertOne(breastCancerStatistic);
 
         //2. zadatak, treći dio
