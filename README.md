@@ -13,8 +13,7 @@ NoSQL Projektni zadatak
 U direktoriju projekta okinuti:
 
     npm install
-    
-    
-Zatim i dalje u direktoriju projekta:
-
     node projekt.js
+    
+# Python dio Projekta
+    pokrenuti u notebooku datoteku i eventualno preuzeti module ako ne postoje na racunalu
