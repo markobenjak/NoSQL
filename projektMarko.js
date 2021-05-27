@@ -213,7 +213,7 @@ const main = async () => {
         breastCancerFrequency.push((await benignFrequency.toArray())[0]);
         breastCancerFrequency.push((await malignantFrequency.toArray())[0]);
 
-        const frequencyCollection = database.collection("breastCancerFrequency");
+        const frequencyCollection = database.collection("frekvencija_breastCancer");
         await frequencyCollection.insertMany(breastCancerFrequency);
 
         // 4. zadatak
