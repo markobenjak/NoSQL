@@ -1,6 +1,6 @@
 const fs = require("fs");
 const { MongoClient } = require("mongodb");
-const { Helpers } = require("./Helpers");
+const { Parser } = require("./Parser");
 
 const databaseUri = "mongodb://localhost:27017";
 const client = new MongoClient(databaseUri, {
@@ -64,7 +64,7 @@ const main = async () => {
 
         const csvString = fs.readFileSync("./dataSetAll.csv", "utf-8");
 
-        let parsedCsvObject = Helpers.csvToJSON(csvString);
+        let parsedCsvObject = Parser.csvToJSON(csvString);
 
         // 1. Zadatak
         // 2. zadatak, treći dio
